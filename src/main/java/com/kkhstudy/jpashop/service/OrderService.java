@@ -4,9 +4,12 @@ import com.kkhstudy.jpashop.domain.*;
 import com.kkhstudy.jpashop.domain.item.Item;
 import com.kkhstudy.jpashop.repository.MemberRepository;
 import com.kkhstudy.jpashop.repository.OrderRepository;
+import com.kkhstudy.jpashop.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -49,6 +52,10 @@ public class OrderService {
         order.cancel();
     }
 
-    /** 주문 검색 */
-    /*  public List<Order> findOrders(OrderSearch orderSearch) {        return orderRepository.findAll(orderSearch);    } */
+    /**
+     * 주문 검색
+     */
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAllByCriteria(orderSearch);
+    }
 }
