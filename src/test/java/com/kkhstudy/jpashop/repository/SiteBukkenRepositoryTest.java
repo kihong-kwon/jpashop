@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 
 @Transactional
 @SpringBootTest
-@AutoConfigureDataJpa
 class SiteBukkenRepositoryTest {
     @Autowired
     private BukkenRepository bukkenRepository;

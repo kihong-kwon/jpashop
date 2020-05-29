@@ -22,10 +22,10 @@ public class SiteBukkenRepository {
     }
 
     public List<SiteBukken> findAll() {
-        return em.createQuery("select m from Member m", SiteBukken.class).getResultList();
+        return em.createQuery("select m from Student m", SiteBukken.class).getResultList();
     }
 
     public List<SiteBukken> findByName(String name) {
-        return em.createQuery("select m from Member m where m.name = :name", SiteBukken.class).setParameter("name", name).getResultList();
+        return em.createQuery("select m from Student m where m.name = :name", SiteBukken.class).setParameter("name", name).getResultList();
     }
 }

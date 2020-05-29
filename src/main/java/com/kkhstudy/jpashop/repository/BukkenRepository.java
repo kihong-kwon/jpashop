@@ -22,10 +22,10 @@ public class BukkenRepository {
     }
 
     public List<Bukken> findAll() {
-        return em.createQuery("select m from Member m", Bukken.class).getResultList();
+        return em.createQuery("select m from Student m", Bukken.class).getResultList();
     }
 
     public List<Bukken> findByName(String name) {
-        return em.createQuery("select m from Member m where m.name = :name", Bukken.class).setParameter("name", name).getResultList();
+        return em.createQuery("select m from Student m where m.name = :name", Bukken.class).setParameter("name", name).getResultList();
     }
 }
