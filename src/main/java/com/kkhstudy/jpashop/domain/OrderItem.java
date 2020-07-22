@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "order_item")
@@ -32,6 +34,9 @@ public class OrderItem {
     private int orderPrice; //주문 가격
 
     private int count;      //주문 수량
+
+    @OneToMany(mappedBy = "orderItem", cascade = CascadeType.ALL)
+    private List<OrderItemDetail> orderItemDetails = new ArrayList<>();
 
     //==생성 메서드 ==//
     public static OrderItem createOrderItem(Item item, int orderPrice, int count) {

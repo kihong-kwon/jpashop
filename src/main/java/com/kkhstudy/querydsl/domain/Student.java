@@ -3,22 +3,28 @@ package com.kkhstudy.querydsl.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of = {"id", "username", "age"})
+@NamedEntityGraph(name = "Student.all", attributeNodes = @NamedAttributeNode("team"))
 public class Student {
     @Id
     @GeneratedValue
-    @Column(name = "member_id")
+    @Column(name = "student_id")
     private Long id;
     private String username;
     private int age;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
+
+    @OneToMany(mappedBy = "student")
+    List<Photo> photos = new ArrayList<>();
 
     public Student(String username) {
         this(username, 0);
